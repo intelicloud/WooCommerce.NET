@@ -245,7 +245,7 @@ namespace WooCommerceNET.WooCommerce.v1
         /// Stock quantity. If is a variable product this value will be used to control stock for all variations, unless you define stock at variation level.
         /// </summary>
         [DataMember(EmitDefaultValue = false)]
-        public int? stock_quantity { get; set; }
+        public decimal? stock_quantity { get; set; }
 
         /// <summary>
         /// Controls whether or not the product is listed as “in stock” or “out of stock” on the frontend. Default is true.
@@ -769,7 +769,7 @@ namespace WooCommerceNET.WooCommerce.v1
         /// Stock quantity. If is a variable variation this value will be used to control stock for all variations, unless you define stock at variation level.
         /// </summary>
         [DataMember(EmitDefaultValue = false)]
-        public int? stock_quantity { get; set; }
+        public decimal? stock_quantity { get; set; }
 
         /// <summary>
         /// Controls whether or not the variation is listed as “in stock” or “out of stock” on the frontend. Default is true.

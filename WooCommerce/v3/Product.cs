@@ -261,7 +261,7 @@ namespace WooCommerceNET.WooCommerce.v3
         /// <summary>
         /// Stock quantity.
         /// </summary>
-        public int? stock_quantity { get; set; }
+        public decimal? stock_quantity { get; set; }
 
         /// <summary>
         /// Controls the stock status of the product. Options: instock, outofstock, onbackorder. Default is instock.

@@ -170,7 +170,7 @@ namespace WooCommerceNET.WooCommerce.v2
         /// <summary>
         /// Stock quantity.
         /// </summary>
-        public int? stock_quantity { get; set; }
+        public decimal? stock_quantity { get; set; }
 
         /// <summary>
         /// Controls whether or not the variation is listed as “in stock” or “out of stock” on the frontend. Default is true.
