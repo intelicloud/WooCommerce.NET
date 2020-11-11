@@ -27,6 +27,7 @@ Changes Doc: https://github.com/XiaoFaye/WooCommerce.NET/blob/master/Changes.md
     <PackageLicenseFile>License.md</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <FileVersion>0.8.0.13330</FileVersion>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
 
   <ItemGroup>
