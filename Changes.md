@@ -3,6 +3,12 @@
 
 Version History
 -------------------
+* v0.8.2 update
+  1. Fix UpdateWithNull is not working correctly. #449
+  2. Fix Product Review 404 issue in WooCommerce API V3. #444
+  3. Missing property in OrderShippingLine (instance_id). #441
+* v0.8.1 update
+  1. Fix image upload issue while hosting with Apache.
 * v0.8.0 update
   1. Fix MetaValueProcessor not working in V3 issue.
   2. Fix OrderRefund.amount wrong data type issue.

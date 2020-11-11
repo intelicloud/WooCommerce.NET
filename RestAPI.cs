@@ -16,17 +16,17 @@ namespace WooCommerceNET
 {
     public class RestAPI
     {
-        private string wc_url = string.Empty;
-        private string wc_key = "";
-        private string wc_secret = "";
+        protected string wc_url = string.Empty;
+        protected string wc_key = "";
+        protected string wc_secret = "";
         //private bool wc_Proxy = false;
 
-        private bool AuthorizedHeader { get; set; }
+        protected bool AuthorizedHeader { get; set; }
 
-        private Func<string, string> jsonSeFilter;
-        private Func<string, string> jsonDeseFilter;
-        private Action<HttpWebRequest> webRequestFilter;
-        private Action<HttpWebResponse> webResponseFilter;
+        protected Func<string, string> jsonSeFilter;
+        protected Func<string, string> jsonDeseFilter;
+        protected Action<HttpWebRequest> webRequestFilter;
+        protected Action<HttpWebResponse> webResponseFilter;
 
         /// <summary>
         /// For Wordpress REST API with OAuth 1.0 ONLY
@@ -216,7 +216,7 @@ namespace WooCommerceNET
                 //else
                 //    httpWebRequest.Proxy = null;
 
-                if (requestBody.GetType() != typeof(string))
+                if (requestBody != null && requestBody.GetType() != typeof(string))
                 {
                     httpWebRequest.ContentType = "application/json";
                     var buffer = Encoding.UTF8.GetBytes(SerializeJSon(requestBody));
@@ -225,12 +225,12 @@ namespace WooCommerceNET
                 }
                 else
                 {
-                    if (requestBody.ToString() != string.Empty)
+                    if (requestBody != null && requestBody.ToString() != string.Empty)
                     {
                         if (requestBody.ToString() == "fileupload")
                         {
                             httpWebRequest.Headers["Content-Disposition"] = $"form-data; filename=\"{parms["name"]}\"";
-                            httpWebRequest.ContentType = "multipart/form-data";
+                            httpWebRequest.ContentType = "application/x-www-form-urlencoded";
 
                             Stream dataStream = await httpWebRequest.GetRequestStreamAsync().ConfigureAwait(false);
                             FileStream fileStream = new FileStream(parms["path"], FileMode.Open, FileAccess.Read);
@@ -302,7 +302,7 @@ namespace WooCommerceNET
             return await SendHttpClientRequest(endpoint, RequestMethod.DELETE, jsonObject, parms).ConfigureAwait(false);
         }
 
-        private string GetOAuthEndPoint(string method, string endpoint, Dictionary<string, string> parms = null)
+        protected string GetOAuthEndPoint(string method, string endpoint, Dictionary<string, string> parms = null)
         {
             if (Version == APIVersion.WordPressAPIJWT || (wc_url.StartsWith("https", StringComparison.OrdinalIgnoreCase) && Version != APIVersion.WordPressAPI))
             {
@@ -353,7 +353,7 @@ namespace WooCommerceNET
             return endpoint + "?" + parmstr.TrimEnd('&');
         }
 
-        private async Task<string> GetStreamContent(Stream s, string charset)
+        protected async Task<string> GetStreamContent(Stream s, string charset)
         {
             StringBuilder sb = new StringBuilder();
             byte[] Buffer = new byte[512];
