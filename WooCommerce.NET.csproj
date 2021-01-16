@@ -26,6 +26,11 @@ Changes Doc: https://github.com/XiaoFaye/WooCommerce.NET/blob/master/Changes.md
     <PackageLicenseFile>License.md</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <FileVersion>0.8.2.0</FileVersion>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutputPath>..\bin\x64\Debug\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
